@@ -1,0 +1,14 @@
+{
+  "name": "script_migracion_mysql",
+  "version": "1.0.0",
+  "description": "Crear tablas en bd",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hossein Calao",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
