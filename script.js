@@ -1,9 +1,9 @@
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host     : 'localhost',
+  host     : '104.154.250.168', // localhost
   user     : 'sofi',
   password : 'SOFI2020#Sanofi',
-  database : 'sofi_production'
+  database : 'sofi_test'
 });
 
 connection.connect();
@@ -117,6 +117,15 @@ connection.query(`UPDATE paths SET
   console.log('Update path with id equal to 23 created: ', results);
 });
 
+connection.query(`UPDATE paths SET
+  path = '/api/v1/specialities/'
+  WHERE id = '20';`,
+  function (error, results, fields) {
+  if (error)
+    console.log('Update path with id equal to 20 failed', error)
+  console.log('Update path with id equal to 20 created: ', results);
+});
+
 let date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
 
 let inserts = [
@@ -129,7 +138,7 @@ let inserts = [
   VALUES ('/api/v1/posts_kol/', 'POST', '`+ date +`', '`+ date +`'),
   ('/api/v1/banner/', 'POST', '`+ date +`', '`+ date +`'),
   ('/api/v1/banner/', 'GET', '`+ date +`', '`+ date +`'),
-  ('/api/v1/banner/:id(\\d+)/:type(enable|disable)', 'POST', '`+ date +`', '`+ date +`'),
+  ('/api/v1/banner/:id(\\\\d+)/:type(enable|disable)', 'POST', '`+ date +`', '`+ date +`'),
   ('/api/v1/banner/withImages', 'GET', '`+ date +`', '`+ date +`');`,
 
   `INSERT INTO security_rules (path_id, role_id, created_at, updated_at) VALUES
